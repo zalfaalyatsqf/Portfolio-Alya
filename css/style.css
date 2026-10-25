@@ -68,6 +68,7 @@ a {
   box-sizing: border-box;
   overflow-x: hidden;
   padding-top: env(safe-area-inset-top, 0);
+  isolation: isolate;
 }
 
 .header-inner {
@@ -89,6 +90,7 @@ body {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
+  position: relative;
 }
 
 .brand {
@@ -142,6 +144,11 @@ body {
   white-space: nowrap;
   flex-shrink: 0;
   flex-grow: 0;
+  position: relative;
+  z-index: 130;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  pointer-events: auto;
 }
 
 .hero {
@@ -690,15 +697,19 @@ body {
     left: 0;
     right: 0;
     width: 100%;
+    overflow-x: visible;
+    overflow-y: visible;
   }
 
   .header-inner {
     width: min(1120px, 100% - 2rem);
+    overflow: visible;
   }
 
   .nav {
     padding: 0.6rem 0;
     gap: 0.4rem;
+    overflow: visible;
   }
 
   .brand {
@@ -710,12 +721,17 @@ body {
 
   .nav-toggle {
     display: inline-flex;
+    position: relative;
+    z-index: 130;
+    pointer-events: auto;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .nav-links {
     position: absolute;
     top: 100%;
-    right: 1rem;
+    right: 0;
     flex-direction: column;
     align-items: flex-start;
     background: var(--surface);
@@ -725,6 +741,7 @@ body {
     display: none;
     box-shadow: 0 20px 40px rgba(16, 101, 139, 0.08);
     gap: 0.4rem;
+    z-index: 120;
   }
 
   .nav-links.open {
@@ -782,15 +799,19 @@ body {
     left: 0;
     right: 0;
     width: 100%;
+    overflow-x: visible;
+    overflow-y: visible;
   }
 
   .header-inner {
     width: min(1120px, 100% - 1rem);
+    overflow: visible;
   }
 
   .nav {
     gap: 0.3rem;
     padding: 0.5rem 0;
+    overflow: visible;
   }
 
   .brand {
